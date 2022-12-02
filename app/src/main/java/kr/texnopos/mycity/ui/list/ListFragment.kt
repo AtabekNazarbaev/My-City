@@ -14,7 +14,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kr.texnopos.mycity.data.local.Dao
 import kr.texnopos.mycity.data.local.ListDatabase
-import kr.texnopos.mycity.data.local.MyDatabase
 import kr.texnopos.mycity.databinding.FragmentListBinding
 
 class ListFragment : Fragment() {

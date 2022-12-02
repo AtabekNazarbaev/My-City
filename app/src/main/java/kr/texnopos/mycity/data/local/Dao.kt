@@ -15,5 +15,5 @@ interface Dao {
     fun getListById(id: Int): List<ListById>
 
     @Query("SELECT * FROM Detail WHERE list_id=:id")
-    fun getInfo(id: Int): Detail
+    fun getInfo(id: Int):Detail
 }

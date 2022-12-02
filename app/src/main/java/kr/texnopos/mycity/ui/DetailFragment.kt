@@ -48,7 +48,6 @@ class DetailFragment : Fragment() {
         tvAddress.text = data.address
             tvPhone.text = data.phone
             tvTime.text = data.time
-            tvTitle.text = "TITLE"
             Glide.with(root.context)
                 .load(args.url)
                 .into(imageView)
