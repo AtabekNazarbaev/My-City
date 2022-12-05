@@ -28,7 +28,6 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
                     .load(data.url)
                     .into(imageView)
                 textView.text = data.name
-                textView.text = R.string.app_name.toString()
                 constraint.setOnClickListener {
                     onItemClick.invoke(data.id, data.url)
                 }

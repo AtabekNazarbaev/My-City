@@ -17,14 +17,10 @@ import kr.texnopos.mycity.databinding.FragmentMainBinding
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
-    private lateinit var dao :Dao
+    private lateinit var dao: Dao
     private val adapter = MainAdapter()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentMainBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -33,7 +29,7 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             recyclerView.adapter = adapter
-            dao =ListDatabase.getInstance(requireContext()).listDao()
+            dao = ListDatabase.getInstance(requireContext()).listDao()
             setData()
             adapter.onItemClick = {
                 val action = MainFragmentDirections.actionMainFragmentToListFragment(it)

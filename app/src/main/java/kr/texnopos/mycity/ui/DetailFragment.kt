@@ -45,12 +45,12 @@ class DetailFragment : Fragment() {
                     dao.getInfo(id)
                 }
             }
-        tvAddress.text = data.address
-            tvPhone.text = data.phone
-            tvTime.text = data.time
-            tvTitle.text = "TITLE"
+            tvTitle.text = "ListId = ${data.id}"
+            tvAddress.text = "📍 ${data.address}"
+            tvPhone.text = "📞 ${data.phone}"
+            tvTime.text = "🕐 ${data.time}"
             Glide.with(root.context)
-                .load(args.url)
+                .load(args.id)
                 .into(imageView)
         }
     }
