@@ -8,7 +8,7 @@ import kr.texnopos.mycity.data.model.Detail
 import kr.texnopos.mycity.data.model.ListById
 import kr.texnopos.mycity.data.model.Main
 
-@Database(entities = [ListById::class, Main::class, Detail::class], version = 5, exportSchema = false)
+@Database(entities = [ListById::class, Main::class, Detail::class], version = 1, exportSchema = false)
 abstract class ListDatabase : RoomDatabase() {
     companion object {
         private lateinit var INSTANCE: ListDatabase
@@ -16,6 +16,7 @@ abstract class ListDatabase : RoomDatabase() {
             if (!::INSTANCE.isInitialized) {
                 INSTANCE = Room.databaseBuilder(context, ListDatabase::class.java, "category_by_id")
                     .createFromAsset("MyCity.db")
+                    .allowMainThreadQueries()
                     .build()
             }
             return INSTANCE

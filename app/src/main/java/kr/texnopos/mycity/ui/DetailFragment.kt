@@ -37,17 +37,13 @@ class DetailFragment : Fragment() {
         setData(args.id)
     }
 
+
     private fun setData(id: Int) {
-        var data = Detail()
+        var data: List<Detail> = dao.getInfo(id)
         binding.apply {
-            CoroutineScope(Dispatchers.Main).launch {
-                data = withContext(Dispatchers.IO) {
-                    dao.getInfo(id)
-                }
-            }
-        tvAddress.text = data.address
-            tvPhone.text = data.phone
-            tvTime.text = data.time
+            tvAddress.text = data[0].address
+            tvPhone.text = data[0].phone
+            tvTime.text = data[0].time
             Glide.with(root.context)
                 .load(args.url)
                 .into(imageView)
