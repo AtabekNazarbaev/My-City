@@ -41,9 +41,9 @@ class DetailFragment : Fragment() {
     private fun setData(id: Int) {
         var data: List<Detail> = dao.getInfo(id)
         binding.apply {
-            tvAddress.text = data[0].address
-            tvPhone.text = data[0].phone
-            tvTime.text = data[0].time
+            tvAddress.text = "📍 ${data[0].address}"
+            tvPhone.text = "📞 ${data[0].phone}"
+            tvTime.text = "🕐 ${data[0].time}"
             Glide.with(root.context)
                 .load(args.url)
                 .into(imageView)
