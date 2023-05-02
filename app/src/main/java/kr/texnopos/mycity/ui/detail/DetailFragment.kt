@@ -1,9 +1,11 @@
 package kr.texnopos.mycity.ui
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -31,6 +33,7 @@ class DetailFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dao = ListDatabase.getInstance(requireContext()).listDao()
@@ -38,14 +41,17 @@ class DetailFragment : Fragment() {
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     private fun setData(id: Int) {
         var data: List<Detail> = dao.getInfo(id)
         binding.apply {
             tvAddress.text = "📍 ${data[0].address}"
             tvPhone.text = "📞 ${data[0].phone}"
             tvTime.text = "🕐 ${data[0].time}"
+            val id = dao.getInfo(id)
+            val picture = "picture${id}"
             Glide.with(root.context)
-                .load(args.url)
+                .load(root.context.resources.getIdentifier(picture,"drawable", root.context.packageName))
                 .into(imageView)
         }
     }
